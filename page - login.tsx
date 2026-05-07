@@ -1,0 +1,111 @@
+import React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+
+export default function LoginPage() {
+  return (
+    <div className="min-h-screen bg-black text-[#d4c3a1] font-sans selection:bg-[#5c110e]">
+      <Head>
+        <title>Login | Bravus Country</title>
+      </Head>
+
+    
+      {/* Header / Navbar - Agora fixo no topo da página */}
+      <nav className="fixed top-0 w-full z-50 bg-[#2d1b0d]/95 backdrop-blur-md px-6 py-4 flex items-center justify-between border-b border-white/5">
+        {/* Links Esquerda */}
+        <div className="hidden md:flex gap-8 text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase">
+          <Link href="/login" className="hover:text-white transition-colors">Entrar</Link>
+          <Link href="/produtos" className="hover:text-white transition-colors">Produtos</Link>
+          <Link href="/destaques" className="hover:text-white transition-colors">Destaque</Link> 
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img src="/logo.png" alt="Bravus Country" className="h-12 md:h-16 object-contain" />
+        </div>
+
+        <div className="flex items-center gap-4 md:gap-8 text-[10px] font-bold tracking-[0.2em] uppercase">
+          <div className="hidden md:flex gap-8">
+            <Link href="/categorias" className="hover:text-white transition-colors">Categorias</Link>
+            <Link href="/sobre" className="hover:text-white transition-colors">Sobre</Link>
+          </div>
+          <div className="flex gap-4 border-l border-white/20 pl-4">
+            <SearchIcon />
+            <UserIcon />
+            <CartIcon />
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content Area */}
+      <main className="relative min-h-screen w-full flex items-center justify-center pt-20">
+        {/* Background Image com Overlay Escuro */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/background.png" // Uma imagem de feno ou celeiro como na referência
+            alt="Background"
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+        </div>
+
+        {/* Login Card */}
+        <div className="relative z-10 w-full max-w-md mx-4">
+          <div className="bg-[#2d1b0d]/90 backdrop-blur-sm p-8 md:p-12 rounded-[2.5rem] border border-white/10 shadow-2xl text-center">
+            
+            <h2 className="text-white text-4xl md:text-5xl font-serif font-bold uppercase tracking-tighter mb-10">
+              Entrar
+            </h2>
+
+            <form className="flex flex-col gap-5">
+              {/* Campo Email */}
+              <div className="flex flex-col text-left gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Email"
+                  className="w-full bg-[#fdf2e9] text-[#2d1b0d] px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#5c110e] placeholder:text-[#2d1b0d]/50 transition-all font-medium"
+                />
+              </div>
+
+              {/* Campo Senha */}
+              <div className="flex flex-col text-left gap-2">
+                <input 
+                  type="password" 
+                  placeholder="Senha"
+                  className="w-full bg-[#fdf2e9] text-[#2d1b0d] px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#5c110e] placeholder:text-[#2d1b0d]/50 transition-all font-medium"
+                />
+              </div>
+              {/* Botão de entrar*/}
+<Link href="/produtos" className="w-full">
+  <span className="mt-4 block w-full bg-[#fdf2e9] hover:bg-white text-[#2d1b0d] py-4 rounded-full font-bold text-center uppercase text-sm tracking-widest transition-all active:scale-95 shadow-md cursor-pointer">
+    Entrar
+  </span>
+</Link>
+            </form>
+
+            <div className="mt-8 text-[11px] uppercase tracking-widest text-[#d4c3a1]/80">
+              Não tem uma conta? 
+              <Link href="/cadastro" className="ml-2 text-white hover:underline font-bold transition-all">
+                Cadastre-se
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer className="absolute bottom-6 w-full text-center text-[10px] uppercase tracking-widest text-zinc-500">
+        © 2026 Bravus Country Vintage
+      </footer>
+    </div>
+  );
+}
+
+// Ícones (Mesmos da Home para consistência)
+const SearchIcon = () => (
+  <svg className="w-5 h-5 cursor-pointer hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+);
+const UserIcon = () => (
+  <svg className="w-5 h-5 cursor-pointer hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+);
+const CartIcon = () => (
+  <svg className="w-5 h-5 cursor-pointer hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+);
